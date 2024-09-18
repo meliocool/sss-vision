@@ -1,7 +1,6 @@
 import os
 import cv2 as cv
 import numpy as np
-import pathlib as pl
 from mtcnn import MTCNN
 import torch
 from facenet_pytorch import InceptionResnetV1
