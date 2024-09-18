@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSS-Vision</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mainpage.css') }}">
+</head>
+<body>
+    <nav id = "navigation">
+        <h1 class = "logo">SSS-Vision</h1>
+        <a href = "https://www.triplescosmos.com/" class = "web" target="_blank"><h1>tripleS official website</h1></a>
+    </nav>
+    <div id = "main-body">
+        <div class = "info">
+            <h1>Welcome to<br>SSS-Vision!</h1>
+            <h2>a dimension to identify tripleS members easily with the help of AI</h2>
+            <h4>Start by uploading your image here</h4>
+        </div>
+        <form id="uploadForm" enctype="multipart/form-data">
+            <div class = "upload-box">
+                <input type="file" id="image" name="image" accept="image/*">
+                <label for ="image">UPLOAD IMAGE</label>
+            </div>
+            <button type="submit"><span>Scan for S</span></button>
+        </form>
+    </div>
+    <div id="result">
+        <img id="processedImage" src="">
+        <button id="closeBtn">Close</button>
+    </div>
+    <script src = "{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
