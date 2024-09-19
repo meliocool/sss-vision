@@ -27,8 +27,8 @@ h1, h2, h4 {
 
 #navigation {
     display: flex;
-    justify-content: center;
-    gap: 40rem;
+    justify-content: space-between;
+    gap: 10rem;
 }
 
 #navigation .logo {
@@ -42,12 +42,9 @@ h1, h2, h4 {
     color: black;
 }
 
-#navigation .web {
-    padding-right: 1rem;
-    padding-top: 1rem;
-    font-size: 20px;
-    text-decoration: none;
-    font-style: normal;
+#navigation .tripleSLOGO {
+    height: 80px;
+    width: 80px;
 }
 
 #main-body {

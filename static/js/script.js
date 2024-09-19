@@ -1,5 +1,10 @@
 $('#image').on('change', function(event) {
     var fileName = $(this).val().split('\\').pop(); 
+    var maxLength = 7; 
+    if (fileName.length > maxLength) {
+        var extension = fileName.split('.').pop();
+        fileName = fileName.substring(0, maxLength) + '...' + extension;
+    }
     $('#uploadLabel').text(fileName);  
 });
 
