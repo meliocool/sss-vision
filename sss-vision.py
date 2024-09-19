@@ -91,8 +91,8 @@ def image_analysis():
         
         Scolor = S_Color.get(name, (0, 255, 0))
         cv.rectangle(img, (x, y), (x+width, y+height), Scolor, 2)
-        cv.putText(img, name, (x, y - 10), cv.FONT_HERSHEY_SIMPLEX, 0.9, Scolor, 2)
-        cv.putText(img, confidence_text, (x, y + height + 20), cv.FONT_HERSHEY_SIMPLEX, 0.7, Scolor, 2)
+        cv.putText(img, name, (x, y - 10), cv.QT_FONT_NORMAL, 0.9, Scolor, 2)
+        cv.putText(img, confidence_text, (x, y + height + 20), cv.QT_FONT_NORMAL, 0.9, Scolor, 2)
             
     output_width = 500 
     output_height = int((output_width / img.shape[1]) * img.shape[0])

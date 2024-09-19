@@ -1,3 +1,8 @@
+$('#image').on('change', function(event) {
+    var fileName = $(this).val().split('\\').pop(); 
+    $('#uploadLabel').text(fileName);  
+});
+
 $('#uploadForm').submit(function(event) {
     event.preventDefault();
     $('#uploadForm').hide();
@@ -65,11 +70,13 @@ $('#uploadForm').submit(function(event) {
 $('#closeBtn').click(function() {
     $('#result').fadeOut(500); 
     $('#uploadForm').show();
+    $('#uploadLabel').text('UPLOAD IMAGE');  
 });
 
 $('#result').click(function(event) {
     if (!$(event.target).is('#processedImage') && !$(event.target).is('#closeBtn')) {
         $('#result').fadeOut(500);
         $('#uploadForm').show();
+        $('#uploadLabel').text('UPLOAD IMAGE');  
     }
 });

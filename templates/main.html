@@ -6,6 +6,7 @@
     <title>SSS-Vision</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mainpage.css') }}">
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='assets/toripuruesu.jpg') }}">
 </head>
 <body>
     <nav id = "navigation">
@@ -22,7 +23,7 @@
             <form id="uploadForm" enctype="multipart/form-data">
                 <div class = "upload-box">
                     <input type="file" id="image" name="image" accept="image/*">
-                    <label for ="image">UPLOAD IMAGE</label>
+                    <label for ="image" id = "uploadLabel">UPLOAD IMAGE</label>
                 </div>
                 <button type="submit"><span>Scan for S</span></button>
             </form>
