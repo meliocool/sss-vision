@@ -6,6 +6,7 @@ $('#image').on('change', function(event) {
         fileName = fileName.substring(0, maxLength) + '...' + extension;
     }
     $('#uploadLabel').text(fileName);  
+    $('#holder').text('Image Uploaded!');
 });
 
 $('#uploadForm').submit(function(event) {
@@ -13,7 +14,6 @@ $('#uploadForm').submit(function(event) {
     $('#uploadForm').hide();
     $('#progressBarContainer').show();
     $('#progress').css('width', '0%');
-    $('#progressText').text('Scanning for S... this could take a while');
     var formData = new FormData(this);
 
     var simulateProgress = 0;
@@ -76,12 +76,14 @@ $('#closeBtn').click(function() {
     $('#result').fadeOut(500); 
     $('#uploadForm').show();
     $('#uploadLabel').text('UPLOAD IMAGE');  
+    $('#holder').text('Start by uploading your image here');
 });
 
 $('#result').click(function(event) {
     if (!$(event.target).is('#processedImage') && !$(event.target).is('#closeBtn')) {
         $('#result').fadeOut(500);
         $('#uploadForm').show();
-        $('#uploadLabel').text('UPLOAD IMAGE');  
+        $('#uploadLabel').text('UPLOAD IMAGE');
+        $('#holder').text('Start by uploading your image here');  
     }
 });

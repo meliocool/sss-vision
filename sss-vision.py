@@ -7,6 +7,7 @@ from facenet_pytorch import InceptionResnetV1
 from sklearn.metrics.pairwise import cosine_similarity
 from PIL import Image
 import io
+import os
 
 app = Flask(__name__)
 
@@ -44,9 +45,17 @@ S_Color = {
 
 faceModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\Face-Embeddings\\dimensionFace_trainedV2.npy')
 nameModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\Face-Embeddings\\dimensionName_trainedV2.npy')
+directory = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SimpleProjects\\is_it_an_S\\training_images'
+count_dict = {name: 0 for name in sss}
 
 detector = MTCNN()
 MLmodel = InceptionResnetV1(pretrained='vggface2').eval()
+
+def save_face(face, folder, count):
+    folder_path = os.path.join(directory, folder)
+    pil_face = Image.fromarray(cv.cvtColor(face, cv.COLOR_BGR2RGB))
+    save_path = os.path.join(folder_path, f'{folder}_face_{count}.jpg')
+    pil_face.save(save_path)
 
 @app.route('/')
 def index():
@@ -85,6 +94,8 @@ def image_analysis():
         if max_similarity > similarity_threshold:
             name = sss[nameModel[match]]
             confidence_text = f'{round(max_similarity * 100)}% Confident'
+            count_dict[name] += 1
+            save_face(facialRegion, name, count_dict[name])
         else:
             name = "Not a tripleS member"
             confidence_text = ""
