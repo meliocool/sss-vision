@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSS-Vision Gallery</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/gallery.css') }}">
+    <link rel="icon" type="image/jpg" href="{{ url_for('static', filename='assets/toripuruesu.jpg') }}">
+</head>
+<body>
+    <nav id = "navigation">
+        <h1 class ="logo" title="Check out user uploaded pictures of tripleS!">Gallery</h1>
+        <div class ="right-nav">
+            <a class = "gallery-portal" href = "{{ url_for('index') }}"><h1 title="Go back to Scan Page">SSS-Vision</h1></a>
+            <a href = "https://www.triplescosmos.com/" target="_blank">
+                <img class="tripleSLOGO" src="{{ url_for('static', filename='assets/toripuruesu.jpg') }}" 
+                title="tripleS official website">
+            </a>
+        </div>
+    </nav>
+    <script src = "{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -11,10 +11,13 @@
 <body>
     <nav id = "navigation">
         <h1 class = "logo">SSS-Vision</h1>
-        <a href = "https://www.triplescosmos.com/" target="_blank">
-            <img class="tripleSLOGO" src="{{ url_for('static', filename='assets/toripuruesu.jpg') }}" 
-            title="tripleS official website">
-        </a>
+        <div class ="right-nav">
+            <a href = "{{ url_for('gallery') }}" class = "gallery-portal"><h1 title="Check out user uploaded pictures of tripleS!">Gallery</h1></a>
+            <a href = "https://www.triplescosmos.com/" target="_blank">
+                <img class="tripleSLOGO" src="{{ url_for('static', filename='assets/toripuruesu.jpg') }}" 
+                title="tripleS official website">
+            </a>
+        </div>
     </nav>
     <div id = "main-body">
         <div class = "info">

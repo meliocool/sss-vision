@@ -118,5 +118,10 @@ def image_analysis():
 
     return send_file(img_io, mimetype='image/jpeg')
 
+@app.route('/gallery')
+def gallery():
+    return render_template('gallery.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
