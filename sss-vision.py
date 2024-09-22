@@ -8,6 +8,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from PIL import Image
 import io
 import os
+import glob
 
 app = Flask(__name__)
 
@@ -45,21 +46,44 @@ S_Color = {
 
 faceModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\Face-Embeddings\\dimensionFace_trainedV2.npy')
 nameModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\Face-Embeddings\\dimensionName_trainedV2.npy')
-directory = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SimpleProjects\\is_it_an_S\\training_images'
-count_dict = {name: 0 for name in sss}
+directory_face_region = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SimpleProjects\\is_it_an_S\\training_images'
+directory_input_save = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\static\\scanned-images'
 
 detector = MTCNN()
 MLmodel = InceptionResnetV1(pretrained='vggface2').eval()
 
+def get_image_count(folder):
+    folder_path = os.path.join(directory_face_region, folder)
+    image_files = glob.glob(os.path.join(folder_path, "*.jpg"))
+    return len(image_files)
+
 def save_face(face, folder, count):
-    folder_path = os.path.join(directory, folder)
+    folder_path = os.path.join(directory_face_region, folder)
     pil_face = Image.fromarray(cv.cvtColor(face, cv.COLOR_BGR2RGB))
     save_path = os.path.join(folder_path, f'{folder}_face_{count}.jpg')
     pil_face.save(save_path)
 
+def uploaded_pic(img, folder, count):
+    path = os.path.join(directory_input_save, folder)
+    save_path = os.path.join(path, f'{folder}_{count}.jpg')
+    with open(save_path, 'wb') as image_file:
+        image_file.write(img.getvalue())  
+
 @app.route('/')
 def index():
     return render_template('main.html')
+
+@app.route('/gallery')
+def gallery():
+    mem = os.listdir(directory_input_save)
+    content = {}
+    mem_sorted = sorted(mem, key=lambda x: int(x.split(' ')[0][1:]))
+    for member in mem_sorted:
+        path = os.path.join(directory_input_save, member)
+        if os.path.isdir(path):
+            image = [f for f in os.listdir(path) if f.endswith(('.jpg', '.jpeg', '.png'))]
+            content[member] = image
+    return render_template('gallery.html', content = content)
 
 @app.route('/upload', methods=['POST'])
 def image_analysis():
@@ -94,8 +118,9 @@ def image_analysis():
         if max_similarity > similarity_threshold:
             name = sss[nameModel[match]]
             confidence_text = f'{round(max_similarity * 100)}% Confident'
-            count_dict[name] += 1
-            save_face(facialRegion, name, count_dict[name])
+            current_count = get_image_count(name)
+            new_count = current_count + 1  
+            save_face(facialRegion, name, new_count)
         else:
             name = "Not a tripleS member"
             confidence_text = ""
@@ -115,13 +140,9 @@ def image_analysis():
     img_io = io.BytesIO()
     pil_img.save(img_io, 'JPEG', quality=100)
     img_io.seek(0)
+    uploaded_pic(img_io, name, new_count)
 
     return send_file(img_io, mimetype='image/jpeg')
-
-@app.route('/gallery')
-def gallery():
-    return render_template('gallery.html')
-
 
 if __name__ == '__main__':
     app.run(debug=True)

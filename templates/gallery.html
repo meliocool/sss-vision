@@ -18,6 +18,14 @@
             </a>
         </div>
     </nav>
+    {% for member, image in content.items() %}
+    <h1 class = "member-names">{{ member }}</h1>
+    <div class = "images">
+        {% for img in image %}
+            <img src = "{{ url_for('static', filename='scanned-images/' ~ member ~ '/' ~ img)}}">
+        {% endfor %}
+    </div>
+    {% endfor %}
     <script src = "{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 </html>

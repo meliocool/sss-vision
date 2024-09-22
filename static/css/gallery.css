@@ -29,6 +29,8 @@ h1, h2, h4 {
     display: flex;
     justify-content: space-between;
     gap: 10rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
 #navigation .logo {
@@ -61,4 +63,35 @@ h1, h2, h4 {
 #navigation .tripleSLOGO {
     height: 80px;
     width: 80px;
+}
+
+.member-names {
+    font-size: 30px;
+    margin-left: 1.5rem;
+    position: relative;
+    width: max-content;
+    margin-bottom: 1rem;
+}
+
+.member-names::after {
+    content: "";
+    width: 100%;
+    height: 5px;
+    background-color: black;
+    position: absolute;
+    top: 50%;
+    left: 110%;
+}
+
+.images {
+    columns: 300px;
+    gap: 10px;
+    margin-left: 1.5rem;
+}
+
+.images img {
+    width: 300px;
+    height: auto;
+    border: 3px solid white;
+    border-radius: 20px;
 }
