@@ -69,6 +69,16 @@ def uploaded_pic(img, folder, count):
     with open(save_path, 'wb') as image_file:
         image_file.write(img.getvalue())  
 
+def text_results(max_font_scale, rect_width, text, font, thickness=1):
+    font_scale = max_font_scale
+    while font_scale > 0.5: 
+        text_size, _ = cv.getTextSize(text, font, font_scale, thickness)
+        text_width = text_size[0]
+        if text_width <= rect_width: 
+            return font_scale
+        font_scale -= 0.1  
+    return 0.5 
+
 @app.route('/')
 def index():
     return render_template('main.html')
@@ -125,10 +135,14 @@ def image_analysis():
             name = "Not a tripleS member"
             confidence_text = ""
         
+        fit_name = text_results(0.9, width, name, cv.QT_FONT_NORMAL, thickness=2)
+        fit_conf = text_results(0.9, width, confidence_text, cv.QT_FONT_NORMAL, thickness=2)
+
         Scolor = S_Color.get(name, (0, 255, 0))
+
         cv.rectangle(img, (x, y), (x+width, y+height), Scolor, 2)
-        cv.putText(img, name, (x, y - 10), cv.QT_FONT_NORMAL, 0.9, Scolor, 2)
-        cv.putText(img, confidence_text, (x, y + height + 20), cv.QT_FONT_NORMAL, 0.9, Scolor, 2)
+        cv.putText(img, name, (x, y - 10), cv.QT_FONT_NORMAL, fit_name, Scolor, 2)
+        cv.putText(img, confidence_text, (x, y + height + 20), cv.QT_FONT_NORMAL, fit_conf, Scolor, 2)
             
     output_width = 500 
     output_height = int((output_width / img.shape[1]) * img.shape[0])
