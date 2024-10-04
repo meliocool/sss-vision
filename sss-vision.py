@@ -44,6 +44,25 @@ S_Color = {
     "S24 JiYeon": (85, 181, 255)
 }
 
+S_Units = {
+    "Acid Angel from Asia": ["S2 Hyerin", "S5 YooYeon", "S7 NaKyoung", "S8 YuBin"],
+    "KRystal Eyes": ["S1 SeoYeon", "S3 Jiwoo", "S4 ChaeYeon", "S6 SooMin"],
+    "Acid Eyes": ["S1 SeoYeon","S2 Hyerin", "S3 Jiwoo", "S4 ChaeYeon", 
+                  "S5 YooYeon", "S6 SooMin", "S7 NaKyoung", "S8 YuBin"],
+    "LOVElution": ["S1 SeoYeon", "S2 Hyerin", "S8 YuBin", "S9 Kaede", 
+                   "S10 Dahyun", "S13 Nien", "S14 SoHyun", "S15 Xinyu"],
+    "EVOLution": ["S3 Jiwoo", "S4 ChaeYeon", "S5 YooYeon", "S6 SooMin", 
+                  "S7 NaKyoung", "S11 Kotone", "S12 YeonJi", "S16 Mayu"],
+    "NXT": ["S17 Lynn", "S18 JooBin", "S19 HaYeon", "S20 ShiOn"],
+    "Aria": ["S3 Jiwoo", "S4 ChaeYeon", "S9 Kaede", "S10 Dahyun", "S13 Nien"],
+    "Glow": ["S21 Chaewon", "S22 Sullin", "S23 SeoAh", "S24 JiYeon"],
+    "Visionary Vision": ["S2 Hyerin", "S5 YooYeon", "S7 NaKyoung", "S8 YuBin", "S9 Kaede",
+                         "S11 Kotone", "S12 YeonJi", "S13 Nien", "S14 SoHyun", "S15 Xinyu",
+                         "S17 Lynn", "S24 JiYeon"],
+    "Hatchi": ["S3 Jiwoo", "S4 ChaeYeon", "S6 SooMin", "S5 YooYeon", "S11 Kotone", 
+               "S16 Mayu", "S20 ShiOn", "S21 Chaewon"]
+}
+
 faceModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\Face-Embeddings\\dimensionFace_trainedV2.npy')
 nameModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\Face-Embeddings\\dimensionName_trainedV2.npy')
 directory_face_region = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SimpleProjects\\is_it_an_S\\training_images'
@@ -67,7 +86,7 @@ def uploaded_pic(img, folder, count):
     path = os.path.join(directory_input_save, folder)
     save_path = os.path.join(path, f'{folder}_{count}.jpg')
     with open(save_path, 'wb') as image_file:
-        image_file.write(img.getvalue())  
+        image_file.write(img.getvalue())
 
 def text_results(max_font_scale, rect_width, text, font, thickness=1):
     font_scale = max_font_scale
@@ -79,6 +98,12 @@ def text_results(max_font_scale, rect_width, text, font, thickness=1):
         font_scale -= 0.1  
     return 0.5 
 
+def extract_s_num(name):
+    try:
+        return int(name.split(' ')[0][1:])
+    except(ValueError, IndexError):
+        return None
+
 @app.route('/')
 def index():
     return render_template('main.html')
@@ -87,7 +112,11 @@ def index():
 def gallery():
     mem = os.listdir(directory_input_save)
     content = {}
-    mem_sorted = sorted(mem, key=lambda x: int(x.split(' ')[0][1:]))
+    members = [m for m in mem if extract_s_num(m) is not None]
+    subU = [m for m in mem if extract_s_num(m) is None]
+    mem_sort = sorted(members, key=extract_s_num)
+    subU_sort = sorted(subU)
+    mem_sorted = mem_sort + subU_sort
     for member in mem_sorted:
         path = os.path.join(directory_input_save, member)
         if os.path.isdir(path):
@@ -97,6 +126,8 @@ def gallery():
 
 @app.route('/upload', methods=['POST'])
 def image_analysis():
+    global S_detected
+    S_detected = []
     file = request.files['image']
     image = np.frombuffer(file.read(), np.uint8)
     img = cv.imdecode(image, cv.IMREAD_COLOR)
@@ -129,7 +160,8 @@ def image_analysis():
             name = sss[nameModel[match]]
             confidence_text = f'{round(max_similarity * 100)}% Confident'
             current_count = get_image_count(name)
-            new_count = current_count + 1  
+            new_count = current_count + 1
+            S_detected.append(name)  
             save_face(facialRegion, name, new_count)
         else:
             name = "Not a tripleS member"
@@ -154,6 +186,11 @@ def image_analysis():
     img_io = io.BytesIO()
     pil_img.save(img_io, 'JPEG', quality=100)
     img_io.seek(0)
+
+    for subU, mem in S_Units.items():
+        if all(s in S_detected for s in mem):
+            name = subU
+
     uploaded_pic(img_io, name, new_count)
 
     return send_file(img_io, mimetype='image/jpeg')
