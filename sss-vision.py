@@ -187,10 +187,21 @@ def image_analysis():
     pil_img.save(img_io, 'JPEG', quality=100)
     img_io.seek(0)
 
+    member_count = len(S_detected)
+    unit = False
     for subU, mem in S_Units.items():
         if all(s in S_detected for s in mem):
             name = subU
-
+            unit = True
+            break
+    if unit == False:
+        if member_count == 2:
+            uploaded_pic(img_io, "Duo", new_count)
+        elif member_count == 3:
+            uploaded_pic(img_io, "Trio", new_count)
+        elif member_count > 3:
+            uploaded_pic(img_io, "Group Picture", new_count)
+    
     uploaded_pic(img_io, name, new_count)
 
     return send_file(img_io, mimetype='image/jpeg')
