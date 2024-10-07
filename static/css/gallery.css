@@ -95,3 +95,26 @@ h1, h2, h4 {
     border: 3px solid white;
     border-radius: 20px;
 }
+
+.to-top {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    opacity: 0;
+    background-color: rgb(32, 31, 31);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.to-top h1 {
+    color: white;
+}
+
+.to-top.active {
+    opacity: 1; /* Show the button when it's active */
+}

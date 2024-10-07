@@ -1,3 +1,12 @@
+const toTop = document.querySelector('.to-top');
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 500) {
+        toTop.classList.add("active");
+    } else {
+        toTop.classList.remove("active");
+    }
+});
+
 $('#image').on('change', function(event) {
     var fileName = $(this).val().split('\\').pop(); 
     var maxLength = 7; 
