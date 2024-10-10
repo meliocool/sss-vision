@@ -5,14 +5,13 @@ NOT IN A VIRTUAL ENVIRONMENT, YOU NEED TO HAVE THE LIBRARIES USED IN THIS PROJEC
 (things might change in the future)
 =
 
-
 SSS-Vision is presumably my group's final project for AI course, it is a web-based, flask powered
 AI system that could receive an image of tripleS members from the user and return a face-recognized and labeled image. The model uses MTCNN and Facenet pretrained model to recognize the face, and i'm using a python-based web-scraper to get the data (pictures of tripleS members) from Pinterest.
 
 
 Before this, i tried with opencv2 precisely FaceLBPHRecognizer (haarcascade_frontalface.xml) using only 2 members, S1 SeoYeon and S7 NaKyoung. It turned out great but it struggles with side-profiles so i upgraded to mtcnn for the face recognition
 
-==================================================================================
+=
 Library usage:
 flask -> for the web server (request and send_file is like the name suggest)
 mtcnn -> to perform face detection in images
@@ -25,7 +24,7 @@ Image -> imported from PIL for impace processing to be sent from the model to th
 io -> same as Image
 os -> to go into every folder and join directories for training purposes  
 glob -> honestly damn near useless, its to just find out how many images are in the folder
-==================================================================================
+=
 
 
 References:  
