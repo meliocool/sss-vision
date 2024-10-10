@@ -1,6 +1,5 @@
 ﻿# SSS-Vision
 
-=
 NOT IN A VIRTUAL ENVIRONMENT, YOU NEED TO HAVE THE LIBRARIES USED IN THIS PROJECT
 (things might change in the future)
 =
@@ -11,7 +10,7 @@ AI system that could receive an image of tripleS members from the user and retur
 
 Before this, i tried with opencv2 precisely FaceLBPHRecognizer (haarcascade_frontalface.xml) using only 2 members, S1 SeoYeon and S7 NaKyoung. It turned out great but it struggles with side-profiles so i upgraded to mtcnn for the face recognition
 
-=
+
 Library usage:
 flask -> for the web server (request and send_file is like the name suggest)
 mtcnn -> to perform face detection in images
