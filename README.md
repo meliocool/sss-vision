@@ -11,7 +11,7 @@ AI system that could receive an image of tripleS members from the user and retur
 Before this, i tried with opencv2 precisely FaceLBPHRecognizer (haarcascade_frontalface.xml) using only 2 members, S1 SeoYeon and S7 NaKyoung. It turned out great but it struggles with side-profiles so i upgraded to mtcnn for the face recognition
 
 
-Library usage:  
+**Library usage:  
 flask -> for the web server (request and send_file is like the name suggest)  
 mtcnn -> to perform face detection in images  
 cv2 -> image reading, recoloring, and resizing for training purposes    
@@ -22,8 +22,7 @@ cosine_similarity -> imported from sklearn.metrics.pairwise to calculate the sim
 Image -> imported from PIL for impace processing to be sent from the model to the front-end  
 io -> same as Image  
 os -> to go into every folder and join directories for training purposes    
-glob -> honestly damn near useless, its to just find out how many images are in the folder  
-=
+glob -> honestly damn near useless, its to just find out how many images are in the folder**  
 
 
 References:  
