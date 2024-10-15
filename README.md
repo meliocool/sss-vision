@@ -2,7 +2,6 @@
 =  
 
 ## NOT IN A VIRTUAL ENVIRONMENT, YOU NEED TO INSTALL THE LIBRARIES USED IN THIS PROJECT
-## (things might change in the future)
 
 ## Overview  
 SSS-Vision is my group's final project for AI course, it is a web-based, flask powered
