@@ -4,11 +4,11 @@
 ## NOT IN A VIRTUAL ENVIRONMENT, YOU NEED TO INSTALL THE LIBRARIES USED IN THIS PROJECT
 
 ## Overview  
-SSS-Vision is my group's final project for AI course, it is a web-based, flask powered
+SSS-Vision is a web-based, flask powered
 AI system that could receive an image of tripleS members from the user and return a face-recognized and labeled image. The model uses MTCNN and Facenet pretrained model to recognize the face, and i'm using a python-based web-scraper to get the data (pictures of tripleS members) from Pinterest.
 
 ## Small Note  
-Before this, i tried with opencv2 precisely FaceLBPHRecognizer (haarcascade_frontalface.xml) using only 2 members, S1 SeoYeon and S7 NaKyoung. It turned out great but it struggles with side-profiles so i upgraded to mtcnn for the face recognition
+opencv2 FaceLBPHRecognizer (haarcascade_frontalface.xml) using only 2 members, S1 SeoYeon and S7 NaKyoung turned out great but it struggles with side-profiles so it is replaced with mtcnn for the face recognition
 
 
 ## Library usage:  
@@ -31,11 +31,6 @@ Before this, i tried with opencv2 precisely FaceLBPHRecognizer (haarcascade_fron
 - **HTML CSS** = Basic is from brocode, and past projects with BNCC  
 - **JavaScript** = AJAX tutorial from BNCC, and ChatGPT  
 - **Neural Network stuff** = https://youtu.be/-rrxxpiZa00?si=h5BGQWerr0EDCQ31  
-
-
-## I hope to further increase the efficiency of this project using TensorFlow in the future (if severe laziness don't get the better of me) 
-
-## P.S I am NOT great with JavaScript and still struggles sometimes, i hope i can do some JS projects in the near future :D
 
 ## Thanks for reading!
 
