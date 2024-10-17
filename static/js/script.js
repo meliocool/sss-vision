@@ -79,9 +79,8 @@ $('#uploadForm').submit(function(event) {
         }
     });
     setTimeout(function() {
-        // Clear the image URL textbox
         $('#image_url').val('');
-    }, 100); // Adjust timing if needed
+    }, 100); 
 });
 
 $('#closeBtn').click(function() {
