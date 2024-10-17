@@ -78,8 +78,11 @@ $('#uploadForm').submit(function(event) {
             $('#progress').css('background-color', 'red');
         }
     });
+    setTimeout(function() {
+        // Clear the image URL textbox
+        $('#image_url').val('');
+    }, 100); // Adjust timing if needed
 });
-
 
 $('#closeBtn').click(function() {
     $('#result').fadeOut(500); 

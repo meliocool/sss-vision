@@ -9,6 +9,7 @@ from PIL import Image
 import io
 import os
 import glob
+import requests
 
 app = Flask(__name__)
 
@@ -67,6 +68,7 @@ faceModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\S
 nameModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\Face-Embeddings\\dimensionName_trainedV2.npy')
 directory_face_region = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SimpleProjects\\is_it_an_S\\training_images'
 directory_input_save = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\static\\scanned-images'
+directory_nonMember = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\memberFalse'
 
 detector = MTCNN()
 MLmodel = InceptionResnetV1(pretrained='vggface2').eval()
@@ -83,7 +85,10 @@ def save_face(face, folder, count):
     pil_face.save(save_path)
 
 def uploaded_pic(img, folder, count):
-    path = os.path.join(directory_input_save, folder)
+    if folder == "Not a tripleS member":
+        path = directory_nonMember
+    else:
+        path = os.path.join(directory_input_save, folder)
     save_path = os.path.join(path, f'{folder}_{count}.jpg')
     with open(save_path, 'wb') as image_file:
         image_file.write(img.getvalue())
@@ -128,8 +133,20 @@ def gallery():
 def image_analysis():
     global S_detected
     S_detected = []
-    file = request.files['image']
-    image = np.frombuffer(file.read(), np.uint8)
+    falseMem_count = 1
+    new_count = 1
+    file = request.files.get('image')
+    image_url = request.form.get('image_url')
+    if file and file.filename != '':
+        image = np.frombuffer(file.read(), np.uint8)
+    elif image_url:
+        response = requests.get(image_url)
+        if response.status_code == 200:
+            image = np.frombuffer(response.content, np.uint8)
+        else:
+            return "Error unable to download image from URL", 400
+    else:
+        return "No image inserted", 400
     img = cv.imdecode(image, cv.IMREAD_COLOR)
     img_rgb = cv.cvtColor(img, cv.COLOR_BGR2RGB)
     faces = detector.detect_faces(img_rgb)
@@ -166,11 +183,11 @@ def image_analysis():
         else:
             name = "Not a tripleS member"
             confidence_text = ""
-        
+
         fit_name = text_results(0.9, width, name, cv.QT_FONT_NORMAL, thickness=2)
         fit_conf = text_results(0.9, width, confidence_text, cv.QT_FONT_NORMAL, thickness=2)
 
-        Scolor = S_Color.get(name, (0, 255, 0))
+        Scolor = S_Color.get(name, (0, 0, 255))
 
         cv.rectangle(img, (x, y), (x+width, y+height), Scolor, 2)
         cv.putText(img, name, (x, y - 10), cv.QT_FONT_NORMAL, fit_name, Scolor, 2)
@@ -201,7 +218,7 @@ def image_analysis():
             uploaded_pic(img_io, "Trio", new_count)
         elif member_count > 3:
             uploaded_pic(img_io, "Group Picture", new_count)
-    
+
     uploaded_pic(img_io, name, new_count)
 
     return send_file(img_io, mimetype='image/jpeg')
