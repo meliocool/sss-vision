@@ -42,7 +42,7 @@ def training():
                 sNames.append(label)
 
 training()
-print("I know tripleS members now!")
+print("Finished learning, I know tripleS members now!")
 
 sFace = np.array(sFace)
 sNames = np.array(sNames)
