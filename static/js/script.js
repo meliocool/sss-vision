@@ -29,7 +29,7 @@ $('#uploadForm').submit(function(event) {
     var interval = setInterval(function(){
         simulateProgress += 1;
         $('#progress').css('width', simulateProgress + '%');
-        $('#progressText').text(simulateProgress + '%');
+        $('#progressText').text(simulateProgress + '% Scanning...');
         if (simulateProgress >= 95){
             clearInterval(interval);
         }
