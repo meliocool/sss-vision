@@ -124,6 +124,13 @@ h1, h2, h4 {
     font-family: 'Poppins', sans-serif;
     pointer-events: auto;
     user-select: auto;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 0 15px rgba(52, 152, 219, 0.6);
+    transition: box-shadow 0.3s ease;
+}
+
+.link-box input:focus {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 20px rgba(52, 152, 219, 0.8);
 }
 
 input[type="file"] {
