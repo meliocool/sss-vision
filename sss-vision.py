@@ -89,6 +89,7 @@ def uploaded_pic(img, folder, count):
         path = directory_nonMember
     else:
         path = os.path.join(directory_input_save, folder)
+
     save_path = os.path.join(path, f'{folder}_{count}.jpg')
     with open(save_path, 'wb') as image_file:
         image_file.write(img.getvalue())
@@ -133,7 +134,6 @@ def gallery():
 def image_analysis():
     global S_detected
     S_detected = []
-    falseMem_count = 1
     new_count = 1
     file = request.files.get('image')
     image_url = request.form.get('image_url')
@@ -177,7 +177,7 @@ def image_analysis():
             name = sss[nameModel[match]]
             confidence_text = f'{round(max_similarity * 100)}% Confident'
             current_count = get_image_count(name)
-            new_count = current_count + 1
+            new_count = current_count + 3 # asspull number btw fck this
             S_detected.append(name)  
             save_face(facialRegion, name, new_count)
         else:
@@ -218,7 +218,7 @@ def image_analysis():
             uploaded_pic(img_io, "Trio", new_count)
         elif member_count > 3:
             uploaded_pic(img_io, "Group Picture", new_count)
-
+    
     uploaded_pic(img_io, name, new_count)
 
     return send_file(img_io, mimetype='image/jpeg')
