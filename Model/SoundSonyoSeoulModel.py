@@ -47,5 +47,5 @@ print("Finished learning, I know tripleS members now!")
 sFace = np.array(sFace)
 sNames = np.array(sNames)
 
-np.save('dimensionFace_trainedV2.npy', sFace)
-np.save('dimensionName_trainedV2.npy', sNames)
+np.save('dimensionFace_trainedV3.npy', sFace)
+np.save('dimensionName_trainedV3.npy', sNames)
