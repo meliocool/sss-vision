@@ -134,7 +134,7 @@ def gallery():
 def image_analysis():
     global S_detected
     S_detected = []
-    new_count = 1
+    new_count = 1 # count for images
     file = request.files.get('image')
     image_url = request.form.get('image_url')
     if file and file.filename != '':
@@ -165,7 +165,7 @@ def image_analysis():
         match = -1
 
         for idx, stored_embedding in enumerate(faceModel):
-            similarity = cosine_similarity([embedding], [stored_embedding])[0][0]
+            similarity = cosine_similarity([embedding], [stored_embedding])[0][0] # god knows what this mean
         
             if similarity > max_similarity:
                 max_similarity = similarity
@@ -178,7 +178,7 @@ def image_analysis():
             confidence_text = f'{round(max_similarity * 100)}% Confident'
             current_count = get_image_count(name)
             new_count = current_count + 3 # asspull number btw fck this
-            S_detected.append(name)  
+            S_detected.append(name)  # append anyway
             save_face(facialRegion, name, new_count)
         else:
             name = "Not a tripleS member"
