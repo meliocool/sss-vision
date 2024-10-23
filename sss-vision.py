@@ -171,7 +171,7 @@ def image_analysis():
                 max_similarity = similarity
                 match = idx
 
-        similarity_threshold = 0.7
+        similarity_threshold = 0.7 # can be adjusted
 
         if max_similarity > similarity_threshold:
             name = sss[nameModel[match]]
