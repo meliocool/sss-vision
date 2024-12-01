@@ -134,7 +134,7 @@ def gallery():
 def image_analysis():
     global S_detected
     S_detected = []
-    new_count = 1 # count for images
+    new_count = 1 # image counter
     file = request.files.get('image')
     image_url = request.form.get('image_url')
     if file and file.filename != '':
@@ -165,7 +165,7 @@ def image_analysis():
         match = -1
 
         for idx, stored_embedding in enumerate(faceModel):
-            similarity = cosine_similarity([embedding], [stored_embedding])[0][0] # god knows what this mean
+            similarity = cosine_similarity([embedding], [stored_embedding])[0][0] # 1 min video of cosine similarity btw
         
             if similarity > max_similarity:
                 max_similarity = similarity
