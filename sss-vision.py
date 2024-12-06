@@ -64,11 +64,15 @@ S_Units = {
                "S16 Mayu", "S20 ShiOn", "S21 Chaewon"]
 }
 
-faceModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\Face-Embeddings\\dimensionFace_trainedV2.npy')
-nameModel = np.load('C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\Face-Embeddings\\dimensionName_trainedV2.npy')
-directory_face_region = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SimpleProjects\\is_it_an_S\\training_images'
-directory_input_save = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SSS-Vision\\static\\scanned-images'
-directory_nonMember = 'C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\memberFalse'
+faceModel_Path = os.path.join('.', 'Face-Embeddings', 'dimensionFace_trainedV2.npy')
+name_model_path = os.path.join('.', 'Face-Embeddings', 'dimensionName_trainedV2.npy')
+
+faceModel = np.load(faceModel_Path)
+nameModel = np.load(name_model_path)
+
+directory_face_region = os.path.join('..', 'SimpleProjects', 'is_it_an_S', 'training_images')
+directory_input_save = os.path.join('.', 'static', 'scanned-images')
+directory_nonMember = os.path.join('..', 'memberFalse')
 
 detector = MTCNN()
 MLmodel = InceptionResnetV1(pretrained='vggface2').eval()
