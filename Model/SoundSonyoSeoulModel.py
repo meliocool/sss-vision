@@ -10,7 +10,7 @@ sss = ['S1 SeoYeon', 'S2 Hyerin', 'S3 Jiwoo', 'S4 ChaeYeon', 'S5 YooYeon', 'S6 S
        'S15 Xinyu', 'S16 Mayu', 'S17 Lynn', 'S18 JooBin', 'S19 HaYeon', 'S20 ShiOn', 'S21 Chaewon',
        'S22 Sullin', 'S23 SeoAh', 'S24 JiYeon']
 
-training_images = "C:\\Users\\Asus VivobookPro\\Documents\\CODING STUFF\\AI\\SimpleProjects\\is_it_an_S\\training_images"
+training_images = os.path.join("..", "SimpleProjects", "is_it_an_S", "training_images")
 
 detector = MTCNN()
 MLmodel = InceptionResnetV1(pretrained='vggface2').eval()
