@@ -116,5 +116,244 @@ h1, h2, h4 {
 }
 
 .to-top.active {
-    opacity: 1; /* Show the button when it's active */
+    opacity: 1;
+}
+
+@media (max-width: 320px) {
+    #navigation {
+        gap: 4rem;
+    }
+    #navigation .logo {
+        font-size: 16px;
+        padding: 10px;
+        padding-top: 15px;
+        margin: 0;
+    }
+    #navigation .right-nav {
+        gap: 20px;
+    }
+    #navigation .gallery-portal {
+        font-size: 10px;
+    }
+    
+    #navigation .tripleSLOGO {
+        height: 40px;
+        width: 40px;
+        margin-top: 0.5rem;
+    }
+
+    .member-names {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .member-names::after {
+        height: 3px;
+    }
+    
+    .images {
+        columns: 300px;
+        gap: 10px;
+        margin-left: 1.5rem;
+    }
+    
+    .images img {
+        width: 130px;
+    }
+    
+    .to-top {
+        position: fixed;
+        bottom: 50px;
+        right: 70px;
+        font-size: 12px;
+        z-index: 1000;
+        border-color: red;
+    }
+    
+    .to-top h1 {
+        color: white;
+    }
+    
+    .to-top.active {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 577px){
+    html, body {
+        overflow-x: hidden;
+    }
+    #navigation {
+        gap: 4rem;
+    }
+    #navigation .logo {
+        font-size: 16px;
+        padding: 10px;
+        padding-top: 15px;
+        margin: 0;
+    }
+    #navigation .right-nav {
+        gap: 20px;
+    }
+    #navigation .gallery-portal {
+        font-size: 10px;
+    }
+    
+    #navigation .tripleSLOGO {
+        height: 40px;
+        width: 40px;
+        margin-top: 0.5rem;
+    }
+    .member-names {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .member-names::after {
+        height: 3px;
+    }
+    
+    .images {
+        columns: 300px;
+        gap: 10px;
+        margin-left: 1.5rem;
+    }
+    
+    .images img {
+        width: 170px;
+    }
+    
+    .to-top {
+        position: fixed;
+        bottom: 50px;
+        font-size: 12px;
+        z-index: 1000;
+        border-color: red;
+    }
+    
+    .to-top h1 {
+        color: white;
+    }
+    
+    .to-top.active {
+        opacity: 1;
+    }
+}
+  
+@media (min-width: 577px) and (max-width: 768px) {
+    #navigation {
+        gap: 0rem;
+    }
+    #navigation .logo {
+        font-size: 16px;
+        padding: 10px;
+        padding-top: 15px;
+        margin: 0;
+    }
+    #navigation .right-nav {
+        gap: 20px;
+    }
+    #navigation .gallery-portal {
+        font-size: 10px;
+    }
+    
+    #navigation .tripleSLOGO {
+        height: 40px;
+        width: 40px;
+        margin-top: 0.5rem;
+    }
+    .member-names {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .member-names::after {
+        height: 3px;
+    }
+    
+    .images {
+        columns: 300px;
+        gap: 10px;
+        margin-left: 1.5rem;
+    }
+    
+    .images img {
+        width: 130px;
+    }
+    
+    .to-top {
+        position: fixed;
+        bottom: 50px;
+        right: 70px;
+        font-size: 12px;
+        z-index: 1000;
+        border-color: red;
+    }
+    
+    .to-top h1 {
+        color: white;
+    }
+    
+    .to-top.active {
+        opacity: 1;
+    }
+}
+  
+@media (min-width: 769px) and (max-width: 1024px) {
+    #navigation {
+        gap: 4rem;
+    }
+    #navigation .logo {
+        font-size: 16px;
+        padding: 10px;
+        padding-top: 15px;
+        margin: 0;
+    }
+    #navigation .right-nav {
+        gap: 20px;
+    }
+    #navigation .gallery-portal {
+        font-size: 10px;
+    }
+    
+    #navigation .tripleSLOGO {
+        height: 40px;
+        width: 40px;
+        margin-top: 0.5rem;
+    }
+    .member-names {
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+    
+    .member-names::after {
+        height: 3px;
+    }
+    
+    .images {
+        columns: 300px;
+        gap: 10px;
+        margin-left: 1.5rem;
+    }
+    
+    .images img {
+        width: 130px;
+    }
+    
+    .to-top {
+        position: fixed;
+        bottom: 50px;
+        right: 70px;
+        font-size: 12px;
+        z-index: 1000;
+        border-color: red;
+    }
+    
+    .to-top h1 {
+        color: white;
+    }
+    
+    .to-top.active {
+        opacity: 1;
+    }
 }

@@ -64,7 +64,7 @@ h1, h2, h4 {
 }
 
 #main-body {
-    display:  flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -281,4 +281,282 @@ button:hover span:after {
 
 #closeBtn:hover {
     background-color: #ddd;
+}
+
+/* responsivity bruv */
+
+@media (max-width: 576px) {
+    html, body {
+        overflow-y: hidden;
+    }
+    #navigation {
+        gap: 4rem;
+    }
+    #navigation .logo {
+        font-size: 16px;
+        padding: 10px;
+        padding-top: 15px;
+        margin: 0;
+    }
+    #navigation .right-nav {
+        gap: 20px;
+    }
+    #navigation .gallery-portal {
+        font-size: 10px;
+    }
+    
+    #navigation .tripleSLOGO {
+        height: 40px;
+        width: 40px;
+        margin-top: 0.5rem;
+    }
+    #main-body {
+        /* background: linear-gradient(rgba(4, 0, 30, 0.5), rgba(4, 9, 30, 0.7)), url("../assets/ot24.jpeg");
+        background-repeat: no-repeat;
+        background-size: cover; */
+        min-height: 91vh;
+    }
+    .info {
+        position: relative;
+        bottom: 8rem;
+    }
+    .uploadContainer {
+        position: relative;
+        bottom: 8rem;
+    }
+    .info h1 {
+        font-size: 60px;
+        line-height: 70px;
+    }
+    .info h2 {
+        font-size: 14px;
+        margin: 0 20px;
+    }
+    .info h4 {
+        font-size: 12px;
+    }
+    .link-box input {
+        width: 300px;
+        font-size: 12px;
+    }
+    button {
+        width: 150px;
+        height: 40px;
+        font-size: 16px;
+        padding: 5px;
+    } 
+    button span:after {
+        display: none;
+    }
+    label {
+        padding: 12px;
+        font-size: 14px;
+    }
+    #progressBar {
+        width: 300px;
+        border-radius: 5px;
+        height: 20px;
+        margin-top: 10px;
+        position: relative;
+        bottom: 8rem;
+    }
+    #progress {
+        border-radius: 10px;
+    }
+    #progressText {
+        font-size: 12px;
+        margin-top: 5px;
+        position: relative;
+        bottom: 8rem;
+    }
+    #closeBtn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        padding: 5px 5px;
+        font-size: 12px;
+        border-radius: 2px;
+    }
+}
+/*
+@media (max-width: 576px) {
+    #navigation {
+        gap: 4rem;
+    }
+    #navigation .logo {
+        font-size: 16px;
+        padding: 10px;
+        padding-top: 15px;
+        margin: 0;
+    }
+    #navigation .right-nav {
+        gap: 20px;
+    }
+    #navigation .gallery-portal {
+        font-size: 10px;
+    }
+    
+    #navigation .tripleSLOGO {
+        height: 40px;
+        width: 40px;
+        margin-top: 0.5rem;
+    }
+    #main-body {
+        min-height: 100vh;
+    }
+    .info h1 {
+        font-size: 42px;
+        line-height: 50px;
+        margin-top: 1.5rem;
+    }
+    .info h2 {
+        font-size: 14px;
+    }
+    .info h4 {
+        font-size: 12px;
+    }
+    .link-box input {
+        width: 300px;
+        font-size: 12px;
+    }
+    button {
+        width: 100px;
+        height: 30px;
+        font-size: 12px;
+        padding: 5px;
+    } 
+    button span:after {
+        display: none;
+    }
+    label {
+        padding: 9px;
+        font-size: 12px;
+    }
+    #progressBar {
+        width: 300px;
+        border-radius: 5px;
+        margin-top: 0.5rem;
+        height: 20px;
+    }
+    #progress {
+        border-radius: 10px;
+    }
+    #progressText {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+    #closeBtn {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        padding: 5px 5px;
+        font-size: 12px;
+        border-radius: 2px;
+    }
+}
+*/
+  
+@media (min-width: 577px) and (max-width: 768px) {
+    #navigation {
+        gap: 4rem;
+    }
+    #navigation .logo {
+        font-size: 20px;
+        padding: 10px;
+        padding-top: 15px;
+        margin: 0;
+    }
+    #navigation .right-nav {
+        gap: 20px;
+    }
+    #navigation .gallery-portal {
+        font-size: 14px;
+    }
+    
+    #navigation .tripleSLOGO {
+        height: 50px;
+        width: 50px;
+        margin-top: 0.5rem;
+    }
+    .info h1 {
+        font-size: 64px;
+        line-height: 60px;
+        margin-top: 1.5rem;
+    }
+    .info h2 {
+        font-size: 14px;
+    }
+    .info h4 {
+        font-size: 12px;
+    }
+    .link-box input {
+        width: 400px;
+        font-size: 12px;
+    }
+    button {
+        width: 100px;
+        height: 30px;
+        font-size: 12px;
+        padding: 5px;
+    } 
+    button span:after {
+        display: none;
+    }
+    label {
+        padding: 9px;
+        font-size: 12px;
+    }
+}
+  
+@media (min-width: 769px) and (max-width: 1024px) {
+    #navigation {
+        gap: 4rem;
+    }
+    #navigation .logo {
+        font-size: 28px;
+        padding: 10px;
+        padding-top: 15px;
+        margin: 0;
+    }
+    #navigation .right-nav {
+        gap: 20px;
+    }
+    #navigation .gallery-portal {
+        font-size: 18px;
+    }
+    #navigation .tripleSLOGO {
+        height: 60px;
+        width: 60px;
+        margin-top: 0.5rem;
+    }
+    .info h1 {
+        font-size: 72px;
+        line-height: 68px;
+        margin-top: 1.5rem;
+    }
+    .info h2 {
+        font-size: 16px;
+    }
+    .info h4 {
+        font-size: 16px;
+    }
+    .link-box input {
+        width: 500px;
+        font-size: 12px;
+    }
+    button {
+        width: 120px;
+        height: 40px;
+        font-size: 14px;
+        padding: 5px;
+    } 
+    button span:after {
+        display: none;
+    }
+    label {
+        font-size: 14px;
+    }
+    #progressBar {
+        width: 500px;
+    }
 }
