@@ -4,6 +4,7 @@ import numpy as np
 from mtcnn import MTCNN
 import torch
 from facenet_pytorch import InceptionResnetV1
+import time
 
 sss = ['S1 SeoYeon', 'S2 Hyerin', 'S3 Jiwoo', 'S4 ChaeYeon', 'S5 YooYeon', 'S6 SooMin', 'S7 NaKyoung',
        'S8 YuBin', 'S9 Kaede', 'S10 Dahyun', 'S11 Kotone', 'S12 YeonJi', 'S13 Nien', 'S14 SoHyun',
@@ -19,7 +20,9 @@ sFace = []
 sNames = []
 
 def training():
+    start_time = time.time()
     for Pic in sss:
+        print(f"Currently on: {Pic}")
         path = os.path.join(training_images, Pic) 
         label = sss.index(Pic)
         for IMG in os.listdir(path):
@@ -41,11 +44,15 @@ def training():
                 sFace.append(embedding.squeeze().numpy())
                 sNames.append(label)
 
+    end_time = time.time()
+    total_time = end_time - start_time
+    print(f"Total training time: {total_time/3600:.2f} Hour - {total_time/60:.2f} minutes - {total_time:.2f} seconds")
+
 training()
 print("Finished learning, I know tripleS members now!")
 
 sFace = np.array(sFace)
 sNames = np.array(sNames)
 
-np.save('dimensionFace_trainedV3.npy', sFace)
-np.save('dimensionName_trainedV3.npy', sNames)
+np.save('dimensionFace_trainedV4.npy', sFace)
+np.save('dimensionName_trainedV4.npy', sNames)
