@@ -1,6 +1,8 @@
 ﻿SSS-Vision
 =
 
+## Note: The gallery on the live demo is temporary and will reset between sessions.
+
 ## Overview
 
 SSS-Vision is a web-based, flask powered
