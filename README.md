@@ -1,12 +1,35 @@
-﻿SSS-Vision
-=
+# SSS-Vision: AI-Powered Face Recognition App
 
-## Note: The gallery on the live demo is temporary and will reset between sessions.
+A web application that uses machine learning to identify members of the K-Pop group tripleS from an uploaded photo.
 
-## Overview
+---
 
-SSS-Vision is a web-based, flask powered
-AI system that could receive an image of tripleS members from the user and return a face-recognized and labeled image. The model uses MTCNN and Facenet pretrained model to recognize the face, and i'm using a python-based web-scraper to get the data (pictures of tripleS members) from Pinterest.
+### Live Demo
+
+Since hosting the full ML model is resource-intensive, here is a complete video demonstration of the working application.
+
+[![SSS-Vision Demo Video](https://github.com/meliocool/sss-vision/blob/main/image.png?raw=true)](https://youtu.be/ZcOA5ZKQk_o)  
+**(Click the image to watch the full video demo on YouTube)**
+
+### Key Features
+
+* **AI-Powered Recognition:** Utilizes a custom-trained face recognition model to make predictions.
+* **Dynamic Gallery:** Displays a history of uploaded images and their predictions (runs locally).
+* **Interactive UI:** A simple and clean user interface built with HTML, CSS, and JavaScript.
+
+### Tech Stack
+
+* **Backend:** Python, Flask, NumPy
+* **Frontend:** HTML5, CSS3, JavaScript (with AJAX)
+* **Machine Learning:** MTCCN, cv2, torch, numpy, inceptionresnetv1, cosine_similarity
+
+### How to Run Locally
+
+1.  Clone the repository: `git clone https://github.com/meliocool/sss-vision.git`
+2.  Create and activate a virtual environment.
+3.  Install dependencies: `pip install -r requirements.txt`
+4.  Run the application: `python sss-vision.py`
+5.  Open your browser to `http://127.0.0.1:5000`
 
 ## Small Note
 
