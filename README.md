@@ -9,7 +9,7 @@ A web application that uses machine learning to identify members of the K-Pop gr
 Since hosting the full ML model is resource-intensive, here is a complete video demonstration of the working application.
 
 [![SSS-Vision Demo Video](https://github.com/meliocool/sss-vision/blob/main/image.png?raw=true)](https://youtu.be/ZcOA5ZKQk_o)  
-**(Click the image to watch the full video demo on YouTube)**
+**Click the image to watch the full demonstration of the application**
 
 ### Key Features
 
