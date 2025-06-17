@@ -64,8 +64,8 @@ S_Units = {
                "S16 Mayu", "S20 ShiOn", "S21 Chaewon"]
 }
 
-faceModel_Path = os.path.join('.', 'Face-Embeddings', 'dimensionFace_trainedV4.npy')
-name_model_path = os.path.join('.', 'Face-Embeddings', 'dimensionName_trainedV4.npy')
+faceModel_Path = os.path.join('.', 'Face-Embeddings', 'dimensionFace_trainedV2.npy')
+name_model_path = os.path.join('.', 'Face-Embeddings', 'dimensionName_trainedV2.npy')
 
 faceModel = np.load(faceModel_Path)
 nameModel = np.load(name_model_path)

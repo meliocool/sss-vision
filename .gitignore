@@ -1,0 +1,7 @@
+sss-visionvenv/
+
+__pycache__/
+
+*.pyc
+
+docs/
